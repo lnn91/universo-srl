@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Máquina de Prueba Hidráulica · Universo SRL</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0d0d0d;
+    --acero: #1a1f2e;
+    --acero-medio: #252b3b;
+    --naranja: #f97316;
+    --naranja-suave: #fb923c;
+    --gris: #6b7280;
+    --gris-claro: #9ca3af;
+    --blanco: #f5f5f0;
+    --linea: rgba(249,115,22,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Textura de fondo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .contenedor {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 32px;
+  }
+
+  .empresa {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--naranja);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .titulo-maquina {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 8vw, 56px);
+    line-height: 0.95;
+    color: var(--blanco);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .titulo-maquina span {
+    color: var(--naranja);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(249,115,22,0.1);
+    border: 1px solid rgba(249,115,22,0.3);
+    padding: 4px 12px;
+    border-radius: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--naranja-suave);
+    letter-spacing: 1px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--naranja);
+    border-radius: 50%;
+    animation: pulso 2s infinite;
+  }
+
+  @keyframes pulso {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* SECCIÓN */
+  .seccion {
+    margin-bottom: 28px;
+  }
+
+  .seccion-titulo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--naranja);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .seccion-titulo::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--linea);
+  }
+
+  /* GRILLA DE SPECS */
+  .specs-grilla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .spec-item {
+    background: var(--acero);
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spec-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--naranja);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .spec-item:hover::before { opacity: 1; }
+
+  .spec-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--gris);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .spec-valor {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--blanco);
+  }
+
+  .spec-vacio {
+    font-size: 13px;
+    color: var(--gris);
+    font-style: italic;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    background: var(--acero);
+    padding: 20px;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    color: var(--gris-claro);
+    line-height: 1.4;
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .checklist-item::before {
+    content: '—';
+    color: var(--naranja);
+    font-family: 'IBM Plex Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* HISTORIAL */
+  .historial-vacio {
+    background: var(--acero);
+    padding: 24px;
+    text-align: center;
+    color: var(--gris);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* BOTÓN */
+  .btn-registrar {
+    display: block;
+    width: 100%;
+    background: var(--naranja);
+    color: var(--negro);
+    text-align: center;
+    padding: 18px 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .btn-registrar::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    transition: right 0.2s;
+  }
+
+  .btn-registrar:hover {
+    background: var(--naranja-suave);
+  }
+
+  .btn-registrar:hover::after {
+    right: 14px;
+  }
+
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--linea);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gris);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <div class="header">
+    <div class="empresa">Universo SRL · Sistema de Mantenimiento</div>
+    <h1 class="titulo-maquina">Máquina de<br><span>Prueba Hidráulica</span></h1>
+    <div class="badge">Fabricación a pedido</div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo">Especificaciones técnicas</div>
+    <div class="specs-grilla">
+      <div class="spec-item">
+        <div class="spec-label">Marca / Modelo</div>
+        <div class="spec-valor">Fabricación a pedido</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">N° de serie</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Año de fabricación</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Presión máxima</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Potencia</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Voltaje</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Frecuencia mantenimiento</div>
+        <div class="spec-vacio">Sin definir</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Vencimiento certificación</div>
+        <div class="spec-vacio">Sin datos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo">Checklist de mantenimiento</div>
+    <div class="checklist">
+      <div class="checklist-item">Verificar presión de trabajo y comparar con valores nominales</div>
+      <div class="checklist-item">Inspeccionar mangueras y conexiones hidráulicas por fugas</div>
+      <div class="checklist-item">Controlar nivel y estado del fluido hidráulico</div>
+      <div class="checklist-item">Revisar manómetros y válvulas de seguridad</div>
+      <div class="checklist-item">Limpiar filtros del circuito hidráulico</div>
+      <div class="checklist-item">Verificar estado de sellos y juntas</div>
+      <div class="checklist-item">Registrar lecturas de presión en cada prueba realizada</div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo">Último mantenimiento</div>
+    <div class="historial-vacio">Sin registros cargados aún</div>
+  </div>
+
+  <a href="https://airtable.com/appiHWqA5ZKP4lHlK/pagjMPDRr3vGRrYFt/form" target="_blank" class="btn-registrar">
+    Registrar mantenimiento
+  </a>
+
+  <div class="footer">
+    Universo SRL · Cruz del Eje, Córdoba · Sistema interno de mantenimiento
+  </div>
+
+</div>
+</body>
+</html>
