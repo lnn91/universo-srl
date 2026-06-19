@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Granalladora · Universo SRL</title>
+<title>Compresor de Aire · Universo SRL</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root { --negro: #0d0d0d; --acero: #1a1f2e; --acero-medio: #252b3b; --naranja: #f97316; --naranja-suave: #fb923c; --gris: #6b7280; --gris-claro: #9ca3af; --blanco: #f5f5f0; --linea: rgba(249,115,22,0.2); }
@@ -23,6 +23,7 @@
   .seccion-titulo::after { content: ''; flex: 1; height: 1px; background: var(--linea); }
   .specs-grilla { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
   .spec-item { background: var(--acero); padding: 14px 16px; position: relative; overflow: hidden; }
+  .spec-item.full { grid-column: 1 / -1; }
   .spec-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--naranja); opacity: 0; transition: opacity 0.2s; }
   .spec-item:hover::before { opacity: 1; }
   .spec-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gris); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
@@ -47,21 +48,24 @@
 <div class="contenedor">
   <div class="header">
     <div class="empresa">Universo SRL · Sistema de Mantenimiento</div>
-    <h1 class="titulo-maquina"><span>Granalladora</span><br>de Turbina</h1>
-    <div class="badge">Fabricación a pedido</div>
+    <h1 class="titulo-maquina">Compresor<br><span>de Aire</span></h1>
+    <div class="badge">Schulz · 2 etapas</div>
   </div>
 
   <div class="seccion">
     <div class="seccion-titulo">Especificaciones técnicas</div>
     <div class="specs-grilla">
-      <div class="spec-item"><div class="spec-label">Marca / Modelo</div><div class="spec-valor">Fabricación a pedido</div></div>
-      <div class="spec-item"><div class="spec-label">Tipo</div><div class="spec-valor">Turbina centrífuga</div></div>
+      <div class="spec-item"><div class="spec-label">Marca</div><div class="spec-valor">Schulz</div></div>
       <div class="spec-item"><div class="spec-label">N° de serie</div><div class="spec-vacio">Sin datos</div></div>
       <div class="spec-item"><div class="spec-label">Año de fabricación</div><div class="spec-vacio">Sin datos</div></div>
-      <div class="spec-item"><div class="spec-label">Potencia</div><div class="spec-vacio">Sin datos</div></div>
-      <div class="spec-item"><div class="spec-label">Voltaje</div><div class="spec-vacio">Sin datos</div></div>
-      <div class="spec-item"><div class="spec-label">Frecuencia mantenimiento</div><div class="spec-valor">Semanal / Mensual</div></div>
-      <div class="spec-item"><div class="spec-label">Abrasivo</div><div class="spec-valor">Granalla metálica</div></div>
+      <div class="spec-item"><div class="spec-label">Desplazamiento</div><div class="spec-valor">566 l/min</div></div>
+      <div class="spec-item"><div class="spec-label">Presión máxima</div><div class="spec-valor">12 bar (175 lbs)</div></div>
+      <div class="spec-item"><div class="spec-label">Etapas de compresión</div><div class="spec-valor">2 (alta y baja)</div></div>
+      <div class="spec-item"><div class="spec-label">Potencia motor</div><div class="spec-valor">5 HP · 2,25 kW</div></div>
+      <div class="spec-item"><div class="spec-label">Polos</div><div class="spec-valor">2</div></div>
+      <div class="spec-item"><div class="spec-label">Volumen tanque</div><div class="spec-valor">261 litros (ASME)</div></div>
+      <div class="spec-item"><div class="spec-label">Peso neto / bruto</div><div class="spec-valor">170 / 221 kg</div></div>
+      <div class="spec-item full"><div class="spec-label">Cabezal</div><div class="spec-valor">2 cilindros en V · Fundición nodular</div></div>
     </div>
   </div>
 
@@ -70,35 +74,27 @@
     <div class="checklist">
       <div class="checklist-grupo">
         <div class="checklist-grupo-titulo">Diario</div>
-        <div class="checklist-item">Verificar nivel de granalla en tolva</div>
-        <div class="checklist-item">Inspeccionar ductos por obstrucciones</div>
-        <div class="checklist-item">Controlar sistema de extracción de polvo (filtro de mangas)</div>
-        <div class="checklist-item">Escuchar ruidos anormales en turbinas al arrancar</div>
-      </div>
-      <div class="checklist-grupo">
-        <div class="checklist-grupo-titulo">Semanal</div>
-        <div class="checklist-item">Limpiar filtro de mangas / colector de polvo</div>
-        <div class="checklist-item">Inspeccionar paletas de turbina por desgaste</div>
-        <div class="checklist-item">Verificar estado de liners internos (paredes de cabina)</div>
+        <div class="checklist-item">Drenar condensado del tanque</div>
+        <div class="checklist-item">Verificar nivel de aceite del cabezal</div>
+        <div class="checklist-item">Escuchar ruidos anormales en el arranque</div>
       </div>
       <div class="checklist-grupo">
         <div class="checklist-grupo-titulo">Mensual</div>
-        <div class="checklist-item">Medir desgaste de paletas y reemplazar si corresponde</div>
-        <div class="checklist-item">Inspeccionar rodamientos de turbina</div>
-        <div class="checklist-item">Controlar tensión de correas del motor</div>
-        <div class="checklist-item">Verificar funcionamiento del clasificador de granalla</div>
+        <div class="checklist-item">Limpiar filtro de aire de admisión</div>
+        <div class="checklist-item">Verificar tensión y estado de correa</div>
+        <div class="checklist-item">Controlar temperatura de operación</div>
       </div>
       <div class="checklist-grupo">
         <div class="checklist-grupo-titulo">Trimestral</div>
-        <div class="checklist-item">Cambio de aceite de rodamientos</div>
-        <div class="checklist-item">Inspección completa de liners y blindajes internos</div>
-        <div class="checklist-item">Revisión eléctrica del tablero de control</div>
+        <div class="checklist-item">Cambiar aceite del cabezal</div>
+        <div class="checklist-item">Inspeccionar válvulas de seguridad</div>
+        <div class="checklist-item">Verificar ajuste de tornillería general</div>
       </div>
       <div class="checklist-grupo">
         <div class="checklist-grupo-titulo">Anual</div>
-        <div class="checklist-item">Reemplazo programado de paletas y distribuidores</div>
-        <div class="checklist-item">Revisión general de turbinas (desmontaje)</div>
-        <div class="checklist-item">Inspección estructural de cabina</div>
+        <div class="checklist-item">Cambio de filtros internos</div>
+        <div class="checklist-item">Revisión eléctrica del motor</div>
+        <div class="checklist-item">Prueba de válvula de seguridad del tanque</div>
       </div>
     </div>
   </div>

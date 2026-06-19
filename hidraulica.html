@@ -12,256 +12,70 @@
     --acero-medio: #252b3b;
     --naranja: #f97316;
     --naranja-suave: #fb923c;
+    --rojo: #ef4444;
+    --rojo-suave: rgba(239,68,68,0.1);
     --gris: #6b7280;
     --gris-claro: #9ca3af;
     --blanco: #f5f5f0;
     --linea: rgba(249,115,22,0.2);
+    --linea-roja: rgba(239,68,68,0.3);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--negro);
-    color: var(--blanco);
-    font-family: 'IBM Plex Sans', sans-serif;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Textura de fondo */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: 
-      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px),
-      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .contenedor {
-    position: relative;
-    z-index: 1;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
-
-  /* HEADER */
-  .header {
-    padding: 32px 0 24px;
-    border-bottom: 1px solid var(--linea);
-    margin-bottom: 32px;
-  }
-
-  .empresa {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--naranja);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .titulo-maquina {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(38px, 8vw, 56px);
-    line-height: 0.95;
-    color: var(--blanco);
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-  }
-
-  .titulo-maquina span {
-    color: var(--naranja);
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(249,115,22,0.1);
-    border: 1px solid rgba(249,115,22,0.3);
-    padding: 4px 12px;
-    border-radius: 2px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--naranja-suave);
-    letter-spacing: 1px;
-  }
-
-  .badge::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--naranja);
-    border-radius: 50%;
-    animation: pulso 2s infinite;
-  }
-
-  @keyframes pulso {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* SECCIÓN */
-  .seccion {
-    margin-bottom: 28px;
-  }
-
-  .seccion-titulo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--naranja);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .seccion-titulo::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--linea);
-  }
-
-  /* GRILLA DE SPECS */
-  .specs-grilla {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .spec-item {
-    background: var(--acero);
-    padding: 14px 16px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .spec-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--naranja);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
+  body { background: var(--negro); color: var(--blanco); font-family: 'IBM Plex Sans', sans-serif; min-height: 100vh; position: relative; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(249,115,22,0.03) 40px, rgba(249,115,22,0.03) 41px); pointer-events: none; z-index: 0; }
+  .contenedor { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 20px 60px; }
+  .header { padding: 32px 0 24px; border-bottom: 1px solid var(--linea); margin-bottom: 32px; }
+  .empresa { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--naranja); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+  .titulo-maquina { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 8vw, 56px); line-height: 0.95; color: var(--blanco); letter-spacing: 1px; margin-bottom: 16px; }
+  .titulo-maquina span { color: var(--naranja); }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3); padding: 4px 12px; border-radius: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--naranja-suave); letter-spacing: 1px; }
+  .badge::before { content: ''; width: 6px; height: 6px; background: var(--naranja); border-radius: 50%; animation: pulso 2s infinite; }
+  @keyframes pulso { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .seccion { margin-bottom: 28px; }
+  .seccion-titulo { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--naranja); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .seccion-titulo::after { content: ''; flex: 1; height: 1px; background: var(--linea); }
+  .seccion-titulo.alerta { color: var(--rojo); }
+  .seccion-titulo.alerta::after { background: var(--linea-roja); }
+  .specs-grilla { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .spec-item { background: var(--acero); padding: 14px 16px; position: relative; overflow: hidden; }
+  .spec-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--naranja); opacity: 0; transition: opacity 0.2s; }
   .spec-item:hover::before { opacity: 1; }
-
-  .spec-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    color: var(--gris);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  .spec-valor {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--blanco);
-  }
-
-  .spec-vacio {
-    font-size: 13px;
-    color: var(--gris);
-    font-style: italic;
-  }
-
-  /* CHECKLIST */
-  .checklist {
-    background: var(--acero);
-    padding: 20px;
-  }
-
-  .checklist-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 14px;
-    color: var(--gris-claro);
-    line-height: 1.4;
-  }
-
+  .spec-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--gris); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .spec-valor { font-size: 15px; font-weight: 500; color: var(--blanco); }
+  .spec-vacio { font-size: 13px; color: var(--gris); font-style: italic; }
+  .checklist { background: var(--acero); padding: 20px; }
+  .checklist-grupo { margin-bottom: 16px; }
+  .checklist-grupo:last-child { margin-bottom: 0; }
+  .checklist-grupo-titulo { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--naranja); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--linea); }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: var(--gris-claro); line-height: 1.4; }
   .checklist-item:last-child { border-bottom: none; }
+  .checklist-item::before { content: '—'; color: var(--naranja); font-family: 'IBM Plex Mono', monospace; flex-shrink: 0; margin-top: 1px; }
 
-  .checklist-item::before {
-    content: '—';
-    color: var(--naranja);
-    font-family: 'IBM Plex Mono', monospace;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
+  /* SECCIÓN DIAGNÓSTICO */
+  .diagnostico-box { background: var(--rojo-suave); border: 1px solid var(--linea-roja); padding: 20px; }
+  .diagnostico-intro { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--rojo); letter-spacing: 1px; margin-bottom: 16px; text-transform: uppercase; }
+  .diagnostico-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(239,68,68,0.15); font-size: 14px; color: var(--gris-claro); line-height: 1.4; }
+  .diagnostico-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .diagnostico-item::before { content: '!'; color: var(--rojo); font-family: 'IBM Plex Mono', monospace; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .diagnostico-sub { font-size: 12px; color: var(--gris); margin-top: 4px; line-height: 1.5; }
 
-  /* HISTORIAL */
-  .historial-vacio {
-    background: var(--acero);
-    padding: 24px;
-    text-align: center;
-    color: var(--gris);
-    font-size: 13px;
-    font-family: 'IBM Plex Mono', monospace;
-  }
+  /* ESQUEMA PISTÓN */
+  .piston-box { background: var(--acero); border-left: 3px solid var(--naranja); padding: 18px 20px; margin-top: 14px; }
+  .piston-titulo { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--naranja); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .piston-componentes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .piston-comp { background: var(--acero-medio); padding: 10px 12px; font-size: 13px; color: var(--gris-claro); display: flex; align-items: center; gap: 8px; }
+  .piston-comp::before { content: '◆'; font-size: 8px; color: var(--naranja); flex-shrink: 0; }
+  .regulacion-box { margin-top: 12px; background: rgba(249,115,22,0.08); border: 1px dashed rgba(249,115,22,0.3); padding: 14px 16px; }
+  .regulacion-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--naranja); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .regulacion-texto { font-size: 13px; color: var(--gris-claro); line-height: 1.6; }
+  .regulacion-texto strong { color: var(--naranja-suave); }
 
-  /* BOTÓN */
-  .btn-registrar {
-    display: block;
-    width: 100%;
-    background: var(--naranja);
-    color: var(--negro);
-    text-align: center;
-    padding: 18px 24px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    margin-top: 32px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.2s;
-  }
-
-  .btn-registrar::after {
-    content: '→';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    transition: right 0.2s;
-  }
-
-  .btn-registrar:hover {
-    background: var(--naranja-suave);
-  }
-
-  .btn-registrar:hover::after {
-    right: 14px;
-  }
-
-  .footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--linea);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--gris);
-    letter-spacing: 1px;
-    text-align: center;
-  }
+  .historial-vacio { background: var(--acero); padding: 24px; text-align: center; color: var(--gris); font-size: 13px; font-family: 'IBM Plex Mono', monospace; }
+  .btn-registrar { display: block; width: 100%; background: var(--naranja); color: var(--negro); text-align: center; padding: 18px 24px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; text-decoration: none; margin-top: 32px; position: relative; overflow: hidden; transition: background 0.2s; }
+  .btn-registrar::after { content: '→'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 18px; transition: right 0.2s; }
+  .btn-registrar:hover { background: var(--naranja-suave); }
+  .btn-registrar:hover::after { right: 14px; }
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--linea); font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gris); letter-spacing: 1px; text-align: center; }
 </style>
 </head>
 <body>
@@ -276,51 +90,79 @@
   <div class="seccion">
     <div class="seccion-titulo">Especificaciones técnicas</div>
     <div class="specs-grilla">
-      <div class="spec-item">
-        <div class="spec-label">Marca / Modelo</div>
-        <div class="spec-valor">Fabricación a pedido</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">N° de serie</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Año de fabricación</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Presión máxima</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Potencia</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Voltaje</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Frecuencia mantenimiento</div>
-        <div class="spec-vacio">Sin definir</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Vencimiento certificación</div>
-        <div class="spec-vacio">Sin datos</div>
-      </div>
+      <div class="spec-item"><div class="spec-label">Marca / Modelo</div><div class="spec-valor">Fabricación a pedido</div></div>
+      <div class="spec-item"><div class="spec-label">N° de serie</div><div class="spec-vacio">Sin datos</div></div>
+      <div class="spec-item"><div class="spec-label">Año de fabricación</div><div class="spec-vacio">Sin datos</div></div>
+      <div class="spec-item"><div class="spec-label">Presión máxima</div><div class="spec-vacio">Sin datos</div></div>
+      <div class="spec-item"><div class="spec-label">Potencia</div><div class="spec-vacio">Sin datos</div></div>
+      <div class="spec-item"><div class="spec-label">Voltaje</div><div class="spec-vacio">Sin datos</div></div>
+      <div class="spec-item"><div class="spec-label">Frecuencia mantenimiento</div><div class="spec-valor">Mensual</div></div>
+      <div class="spec-item"><div class="spec-label">Uso</div><div class="spec-valor">Prueba cilindros GNC</div></div>
     </div>
   </div>
 
   <div class="seccion">
     <div class="seccion-titulo">Checklist de mantenimiento</div>
     <div class="checklist">
-      <div class="checklist-item">Verificar presión de trabajo y comparar con valores nominales</div>
-      <div class="checklist-item">Inspeccionar mangueras y conexiones hidráulicas por fugas</div>
-      <div class="checklist-item">Controlar nivel y estado del fluido hidráulico</div>
-      <div class="checklist-item">Revisar manómetros y válvulas de seguridad</div>
-      <div class="checklist-item">Limpiar filtros del circuito hidráulico</div>
-      <div class="checklist-item">Verificar estado de sellos y juntas</div>
-      <div class="checklist-item">Registrar lecturas de presión en cada prueba realizada</div>
+      <div class="checklist-grupo">
+        <div class="checklist-grupo-titulo">Antes de cada uso</div>
+        <div class="checklist-item">Verificar nivel de agua en depósito</div>
+        <div class="checklist-item">Inspeccionar mangueras y conexiones por pérdidas</div>
+        <div class="checklist-item">Controlar lectura de manómetros en reposo (deben marcar cero)</div>
+        <div class="checklist-item">Verificar que válvulas de alivio estén operativas</div>
+      </div>
+      <div class="checklist-grupo">
+        <div class="checklist-grupo-titulo">Mensual</div>
+        <div class="checklist-item">Limpiar filtro de agua de entrada</div>
+        <div class="checklist-item">Inspeccionar sellos y racores de alta presión</div>
+        <div class="checklist-item">Verificar calibración de manómetros</div>
+        <div class="checklist-item">Controlar estado de mangueras de alta presión (grietas, deformaciones)</div>
+      </div>
+      <div class="checklist-grupo">
+        <div class="checklist-grupo-titulo">Trimestral</div>
+        <div class="checklist-item">Cambio de aceite de bomba hidráulica</div>
+        <div class="checklist-item">Inspección de válvula de seguridad y alivio</div>
+        <div class="checklist-item">Revisión eléctrica del motor y tablero</div>
+      </div>
+      <div class="checklist-grupo">
+        <div class="checklist-grupo-titulo">Anual</div>
+        <div class="checklist-item">Calibración certificada de manómetros</div>
+        <div class="checklist-item">Revisión completa de bomba de alta presión</div>
+        <div class="checklist-item">Inspección de todos los sellos y retenes</div>
+        <div class="checklist-item">Verificación de presión máxima de trabajo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion">
+    <div class="seccion-titulo alerta">⚠ Diagnóstico — No levanta presión</div>
+    <div class="diagnostico-box">
+      <div class="diagnostico-intro">Si la máquina no alcanza presión, seguir este orden:</div>
+      <div class="diagnostico-item">
+        <span>Limpiar todo y probar</span>
+      </div>
+      <div class="diagnostico-item">
+        Revisar asientos de válvulas
+        <div class="diagnostico-sub">Inspeccionar desgaste o suciedad en los asientos de válvula de entrada y salida del pistón</div>
+      </div>
+      <div class="diagnostico-item">
+        Verificar que no haya pérdida de agua
+        <div class="diagnostico-sub">Revisar todas las conexiones, racores y sellos con la máquina bajo presión</div>
+      </div>
+    </div>
+
+    <div class="piston-box">
+      <div class="piston-titulo">Componentes del pistón</div>
+      <div class="piston-componentes">
+        <div class="piston-comp">Válvula de entrada de agua</div>
+        <div class="piston-comp">Válvula de salida con presión</div>
+        <div class="piston-comp">Purgador</div>
+        <div class="piston-comp">Tapón ciego</div>
+      </div>
+      <div class="regulacion-box">
+        <div class="regulacion-label">Regulación de entrada de agua</div>
+        <div class="regulacion-texto">Ajustar <strong>a tope</strong> y luego volver atrás <strong>aproximadamente 1 vuelta</strong> desenroscando.</div>
+      </div>
     </div>
   </div>
 
@@ -333,10 +175,7 @@
     Registrar mantenimiento
   </a>
 
-  <div class="footer">
-    Universo SRL · Cruz del Eje, Córdoba · Sistema interno de mantenimiento
-  </div>
-
+  <div class="footer">Universo SRL · Cruz del Eje, Córdoba · Sistema interno de mantenimiento</div>
 </div>
 </body>
 </html>
